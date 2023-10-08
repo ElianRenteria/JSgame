@@ -11,9 +11,15 @@
             app = new PIXI.Application({
                 width: 1500,
                 height: 500,
-                backgroundColor: 0x00008B
+                backgroundColor: 0xAAAAAA
             });
             document.body.appendChild(app.view);
+            player = new PIXI.Sprite.from("sprites/player.png");
+            player.anchor.set(0.5);
+            player.x = app.view.width / 2;
+            player.y = app.view.height / 2;
+
+            app.stage.addChild(player);
         }
     </script>
 </head>
