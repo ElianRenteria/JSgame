@@ -3,24 +3,36 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JSgame</title>
     <script src="https://pixijs.download/v7.3.1/pixi.js"></script>
     <script>
-        let app;
-        window.onload = function(){
-            app = new PIXI.Application({
-                width: 1500,
-                height: 500,
-                backgroundColor: 0xAAAAAA
-            });
+
+        document.addEventListener("DOMContentLoaded", function () {
+            const app = new PIXI.Application({
+                width: 800,
+                height: 600,
+                backgroundColor: 0x1099bb,
+            })
+
             document.body.appendChild(app.view);
-            player = new PIXI.Sprite.from("sprites/player.png");
+
+            // player object    
+            const player = PIXI.Sprite.from("sprites/player.png");
             player.anchor.set(0.5);
             player.x = app.view.width / 2;
             player.y = app.view.height / 2;
 
             app.stage.addChild(player);
-        }
+        
+            app.ticker.add((delta) =>
+            {
+                // just for fun, let's rotate mr rabbit a little
+                // delta is 1 if running at 100% performance
+                // creates frame-independent transformation
+                player.rotation += 0.1 * delta;
+            });
+        });
+
     </script>
 </head>
 <body>
